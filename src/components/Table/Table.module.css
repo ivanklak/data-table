@@ -1,0 +1,36 @@
+.table {
+  text-align: left;
+  font-size: 14px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.tbody {
+  font-size: 14px;
+  cursor: pointer;
+}
+.tbody td {
+  border-top: 1px solid rgba(129, 129, 129, 0.288);
+  padding: 5px 20px;
+}
+.thead th {
+  padding: 5px 20px;
+}
+
+.pages {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: scroll;
+  width: 800px;
+  height: 25px;
+  padding: 5px;
+  border: 2px solid rgba(61, 114, 122, 0.233);
+  border-radius: 5px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.selectedPage {
+  font-weight: bold;
+}
