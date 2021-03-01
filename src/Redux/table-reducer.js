@@ -42,10 +42,10 @@ export const requestUsers = (currentPage, pageSize) => {
   return dispatch => {
     dispatch(setCurrentPage(currentPage));
     usersAPI.getUsers(currentPage, pageSize).then(data => {
-      //debugger;
+      //   debugger;
       dispatch(setUsers(data.items));
       dispatch(setTotalUsersCount(data.totalCount));
-      //   console.log(data);
+        // console.log(data);
     });
   };
 };

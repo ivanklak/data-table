@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Table from "./Table";
 import { connect } from "react-redux";
 import {
@@ -9,29 +9,60 @@ import {
 } from "../../Redux/table-selectors";
 import { requestUsers, setCurrentPage } from "../../Redux/table-reducer";
 
-class TableContainer extends React.Component {
-  componentDidMount() {
-    this.props.requestUsers(this.props.currentPage, this.props.pageSize);
-    // console.log(this.props);
-    // debugger;
-  }
-  onPageChanged = pageNumber => {
-    this.props.requestUsers(pageNumber, this.props.pageSize);
+const TableContainer = props => {
+  const [sortRows, setsortRowss] = useState([]);
+  const { users } = props;
+
+  const sortUsers = React.useMemo(() => {
+    let sortedUsers = [...users];
+    if (sortRows !== null) {
+      sortedUsers.sort((a, b) => {
+        if (a[sortRows.key] < b[sortRows.key]) {
+          return sortRows.direction === "ascending" ? -1 : 1;
+        }
+        if (a[sortRows.key] > b[sortRows.key]) {
+          return sortRows.direction === "ascending" ? 1 : -1;
+        }
+        return 0;
+      });
+    }
+    return sortedUsers;
+  }, [users, sortRows]);
+
+  const requestSort = key => {
+    let direction = "ascending";
+    if (
+      sortRows &&
+      sortRows.key === key &&
+      sortRows.direction === "ascending"
+    ) {
+      direction = "descending";
+    }
+    setsortRowss({ key, direction });
   };
-  render() {
-    return (
-      <div>
-        <Table
-          users={this.props.users}
-          totalUsersCount={this.props.totalUsersCount}
-          pageSize={this.props.pageSize}
-          currentPage={this.props.currentPage}
-          onPageChanged={this.onPageChanged}
-        />
-      </div>
-    );
-  }
-}
+
+  useEffect(() => {
+    props.requestUsers(props.currentPage, props.pageSize);
+  }, []);
+
+  const onPageChanged = pageNumber => {
+    props.requestUsers(pageNumber, props.pageSize);
+  };
+
+  return (
+    <div>
+      <Table
+        totalUsersCount={props.totalUsersCount}
+        pageSize={props.pageSize}
+        currentPage={props.currentPage}
+        onPageChanged={onPageChanged}
+        users={sortUsers}
+        requestSort={requestSort}
+        sortRows={sortRows}
+      />
+    </div>
+  );
+};
 
 let mapStateToProps = state => {
   return {

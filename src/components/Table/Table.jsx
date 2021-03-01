@@ -2,13 +2,22 @@ import React from "react";
 import s from "./Table.module.css";
 
 const Table = props => {
-  console.log(props);
+  //   console.log(props);
 
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
   let pages = [];
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   }
+
+  const { sortRows } = props.users;
+  const getNames = name => {
+    if (!sortRows) {
+      return;
+    }
+    return sortRows.key === name ? sortRows.direction : undefined;
+  };
+
   return (
     <div>
       <div className={s.pages}>
@@ -28,9 +37,24 @@ const Table = props => {
       <table className={s.table}>
         <thead className={s.thead}>
           <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Status</th>
+            <th
+              onClick={() => props.requestSort("id")}
+              className={getNames("id")}
+            >
+              ID
+            </th>
+            <th
+              onClick={() => props.requestSort("name")}
+              className={getNames("name")}
+            >
+              Name
+            </th>
+            <th
+              onClick={() => props.requestSort("status")}
+              className={getNames("status")}
+            >
+              Status
+            </th>
             <th>Photo</th>
           </tr>
         </thead>

@@ -6,7 +6,6 @@
 }
 .tbody {
   font-size: 14px;
-  cursor: pointer;
 }
 .tbody td {
   border-top: 1px solid rgba(129, 129, 129, 0.288);
@@ -14,6 +13,7 @@
 }
 .thead th {
   padding: 5px 20px;
+  cursor: pointer;
 }
 
 .pages {
