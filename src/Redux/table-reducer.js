@@ -44,7 +44,7 @@ export const requestUsers = (currentPage, pageSize) => {
     usersAPI.getUsers(currentPage, pageSize).then(data => {
       //   debugger;
       dispatch(setUsers(data.items));
-      dispatch(setTotalUsersCount(data.totalCount));
+      dispatch(setTotalUsersCount(Math.ceil(data.totalCount / 4))); //чтобы не загружать всех пользователей
         // console.log(data);
     });
   };

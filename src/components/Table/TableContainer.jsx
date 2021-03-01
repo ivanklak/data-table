@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Table from "./Table";
+import s from "./Table.module.css";
 import { connect } from "react-redux";
 import {
   getUsers,
@@ -10,9 +11,18 @@ import {
 import { requestUsers, setCurrentPage } from "../../Redux/table-reducer";
 
 const TableContainer = props => {
-  const [sortRows, setsortRowss] = useState([]);
-  const { users } = props;
+  const [sortRows, setSortRows] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
+  useEffect(() => {
+    props.requestUsers(props.currentPage, props.pageSize);
+  }, []);
+
+  const onPageChanged = pageNumber => {
+    props.requestUsers(pageNumber, props.pageSize);
+  };
+
+  const { users } = props;
   const sortUsers = React.useMemo(() => {
     let sortedUsers = [...users];
     if (sortRows !== null) {
@@ -38,25 +48,30 @@ const TableContainer = props => {
     ) {
       direction = "descending";
     }
-    setsortRowss({ key, direction });
+    setSortRows({ key, direction });
   };
 
-  useEffect(() => {
-    props.requestUsers(props.currentPage, props.pageSize);
-  }, []);
-
-  const onPageChanged = pageNumber => {
-    props.requestUsers(pageNumber, props.pageSize);
+  const search = rows => {
+    return rows.filter(
+      row => row.name.toLowerCase().indexOf(searchValue.toLowerCase()) > -1
+    );
   };
 
   return (
     <div>
+      <input
+        value={searchValue}
+        type="text"
+        className={s.search}
+        placeholder="Search.. "
+        onChange={e => setSearchValue(e.target.value)}
+      />
       <Table
         totalUsersCount={props.totalUsersCount}
         pageSize={props.pageSize}
         currentPage={props.currentPage}
         onPageChanged={onPageChanged}
-        users={sortUsers}
+        users={search(sortUsers)}
         requestSort={requestSort}
         sortRows={sortRows}
       />
