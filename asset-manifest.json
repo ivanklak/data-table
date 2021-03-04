@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/data_table/static/css/main.d474ded2.chunk.css",
-    "main.js": "/data_table/static/js/main.114a897d.chunk.js",
-    "main.js.map": "/data_table/static/js/main.114a897d.chunk.js.map",
-    "runtime-main.js": "/data_table/static/js/runtime-main.87d53852.js",
-    "runtime-main.js.map": "/data_table/static/js/runtime-main.87d53852.js.map",
-    "static/js/2.ba10f05e.chunk.js": "/data_table/static/js/2.ba10f05e.chunk.js",
-    "static/js/2.ba10f05e.chunk.js.map": "/data_table/static/js/2.ba10f05e.chunk.js.map",
-    "static/js/3.1d654132.chunk.js": "/data_table/static/js/3.1d654132.chunk.js",
-    "static/js/3.1d654132.chunk.js.map": "/data_table/static/js/3.1d654132.chunk.js.map",
-    "index.html": "/data_table/index.html",
-    "static/css/main.d474ded2.chunk.css.map": "/data_table/static/css/main.d474ded2.chunk.css.map",
-    "static/js/2.ba10f05e.chunk.js.LICENSE.txt": "/data_table/static/js/2.ba10f05e.chunk.js.LICENSE.txt",
-    "static/media/loader2.62746178.gif": "/data_table/static/media/loader2.62746178.gif"
+    "main.css": "/data-table/static/css/main.d474ded2.chunk.css",
+    "main.js": "/data-table/static/js/main.25c594d7.chunk.js",
+    "main.js.map": "/data-table/static/js/main.25c594d7.chunk.js.map",
+    "runtime-main.js": "/data-table/static/js/runtime-main.9a17d106.js",
+    "runtime-main.js.map": "/data-table/static/js/runtime-main.9a17d106.js.map",
+    "static/js/2.d5ddb522.chunk.js": "/data-table/static/js/2.d5ddb522.chunk.js",
+    "static/js/2.d5ddb522.chunk.js.map": "/data-table/static/js/2.d5ddb522.chunk.js.map",
+    "static/js/3.1d654132.chunk.js": "/data-table/static/js/3.1d654132.chunk.js",
+    "static/js/3.1d654132.chunk.js.map": "/data-table/static/js/3.1d654132.chunk.js.map",
+    "index.html": "/data-table/index.html",
+    "static/css/main.d474ded2.chunk.css.map": "/data-table/static/css/main.d474ded2.chunk.css.map",
+    "static/js/2.d5ddb522.chunk.js.LICENSE.txt": "/data-table/static/js/2.d5ddb522.chunk.js.LICENSE.txt",
+    "static/media/loader2.62746178.gif": "/data-table/static/media/loader2.62746178.gif"
   },
   "entrypoints": [
-    "static/js/runtime-main.87d53852.js",
-    "static/js/2.ba10f05e.chunk.js",
+    "static/js/runtime-main.9a17d106.js",
+    "static/js/2.d5ddb522.chunk.js",
     "static/css/main.d474ded2.chunk.css",
-    "static/js/main.114a897d.chunk.js"
+    "static/js/main.25c594d7.chunk.js"
   ]
 }
