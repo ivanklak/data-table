@@ -6,9 +6,11 @@ import {
   getUsers,
   getPageSize,
   getTotalUsersCount,
-  getCurrentPage
+  getCurrentPage,
+  getIsFetching
 } from "../../Redux/table-selectors";
 import { requestUsers, setCurrentPage } from "../../Redux/table-reducer";
+import Preloader from "../Preloader/Preloader";
 
 const TableContainer = props => {
   const [sortRows, setSortRows] = useState([]);
@@ -66,6 +68,7 @@ const TableContainer = props => {
         placeholder="Search.. "
         onChange={e => setSearchValue(e.target.value)}
       />
+      {props.isFetching ? <Preloader /> : null}
       <Table
         totalUsersCount={props.totalUsersCount}
         pageSize={props.pageSize}
@@ -84,7 +87,8 @@ let mapStateToProps = state => {
     users: getUsers(state),
     pageSize: getPageSize(state),
     totalUsersCount: getTotalUsersCount(state),
-    currentPage: getCurrentPage(state)
+    currentPage: getCurrentPage(state),
+    isFetching: getIsFetching(state)
   };
 };
 

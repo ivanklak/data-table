@@ -19,3 +19,6 @@ export const getTotalUsersCount = state => {
 export const getCurrentPage = state => {
   return state.tablePage.currentPage;
 };
+export const getIsFetching = state => {
+  return state.tablePage.isFetching;
+};
